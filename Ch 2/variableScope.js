@@ -1,0 +1,1 @@
+//Notes taken on ch. 2 - variable Scope
