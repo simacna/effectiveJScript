@@ -24,3 +24,5 @@ function score(player) {
 
 	return sum;
 }
+
+//git jason 
