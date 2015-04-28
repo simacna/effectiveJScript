@@ -36,3 +36,31 @@ function score(player) {
 
 //above shows we have two ways of creating global variables. Either declare var in the global scope OR add it to global object
 //var declaration better since more clearly conveys the effect on the program's scope. 
+
+//using a variable name for the first time without the var term will automatically create a global variable. example:
+
+function swap(a, i, j) {
+	temp = a[i];
+	a[i] = a[j];
+	a[j] = temp;
+}
+
+//above, temp has never been declared, so it gets added to the global scope. correct version below:
+
+function swap2(a, i, j) {
+	var temp = a[i];
+	a[i] = a[j];
+	a[j] = temp;
+}
+
+
+
+
+
+
+
+
+
+
+
+
