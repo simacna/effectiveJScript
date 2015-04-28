@@ -74,6 +74,19 @@ function makeSandwich(){
 
 makeSandwich(); //'peanut butter and jelly'
 
+//#2 - functions can refer to variables defined in outer functions even after those outer functions have returned. Personal note: this is strange, do more online research on this
+
+function sandwichMaker(){
+	var magiIngredient = 'peanut butter';
+	function make(filling){
+		return magicIngredient + ' and ' + filling;
+	}
+	return make;
+}
+
+var f = sandwichMaker();
+f("jelly"); //"peanut butter and jelly"
+
 
 
 
