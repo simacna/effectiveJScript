@@ -25,4 +25,14 @@ function score(player) {
 	return sum;
 }
 
-//git jason 
+//global objects are bount to the global window
+//foo = 'global foo';
+//this.foo //'global foo'
+
+//updating global objects automatically updates global namespace
+//var foo = 'global foo';
+//this.foo = 'changed';
+//foo; //'changed'
+
+//above shows we have two ways of creating global variables. Either declare var in the global scope OR add it to global object
+//var declaration better since more clearly conveys the effect on the program's scope. 
