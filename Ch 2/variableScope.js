@@ -37,7 +37,7 @@ function score(player) {
 //above shows we have two ways of creating global variables. Either declare var in the global scope OR add it to global object
 //var declaration better since more clearly conveys the effect on the program's scope. 
 
-//using a variable name for the first time without the var term will automatically create a global variable. example:
+//2.9using a variable name for the first time without the var term will automatically create a global variable. example:
 
 function swap(a, i, j) {
 	temp = a[i];
@@ -52,6 +52,33 @@ function swap2(a, i, j) {
 	a[i] = a[j];
 	a[j] = temp;
 }
+
+//Things to remember:
+// 1) Always declare new local variables with var
+// 2) Consider using lint tools to help check for unbound variables
+
+
+//chapter 2.11 -- closures. Three things to mainly know about them
+
+//#1 - JS allows you to refer to variables that were defined outside of the current function. Example below:
+
+function makeSandwich(){
+	var magicIngredient = 'peaunut butter';
+	function make(filling){
+		return magicIngredient + 'and' + filling;
+	}
+	
+	return make('jelly');
+	
+}
+
+makeSandwich(); //'peanut butter and jelly'
+
+
+
+
+
+
 
 
 
