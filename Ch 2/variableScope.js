@@ -84,8 +84,10 @@ function sandwichMaker(){
 	return make;
 }
 
-var f = sandwichMaker();
+var f = sandwichMaker(); //the whole value of f is the returned make function
 f("jelly"); //"peanut butter and jelly"
+//functions that keep track of variables from their containing scopes are known as closures
+//the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
 
 
