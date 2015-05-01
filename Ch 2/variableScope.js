@@ -89,6 +89,19 @@ f("jelly"); //"peanut butter and jelly"
 //functions that keep track of variables from their containing scopes are known as closures
 //the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
+//example taken from Mozilla (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+//lexical scope vs closure
+//lexical:
+
+function init() {
+  var name = "Mozilla"; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    alert(name); // use variable declared in the parent function    
+  }
+  displayName();    
+}
+init();
+
 
 
 
