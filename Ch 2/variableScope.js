@@ -102,6 +102,19 @@ function init() {
 }
 init();
 
+//closure example. below running the program will give the same output as the above
+
+function makeFunc() {
+  var name = "Mozilla";
+  function displayName() {
+    alert(name);
+  }
+  return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+
 
 
 
