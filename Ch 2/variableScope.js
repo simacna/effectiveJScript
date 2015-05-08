@@ -112,7 +112,7 @@ function makeFunc() {
   return displayName;
 }
 
-var myFunc = makeFunc();
+var myFunc = makeFunc(); //	QUESTION -- why won't the output (alert showing "Mozilla") if makeFunc(); called on its own?
 myFunc();
 
 
