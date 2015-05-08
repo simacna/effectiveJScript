@@ -100,6 +100,14 @@ function sandwichMaker(magicIngredient) {
 var hamAnd = sandwichMaker("ham");
 hamAnd("cheese"); // "ham and cheese"
 
+//below is an anonomyous function is returned 
+
+function sandwichMaker(magicIngredient){
+	return function(filling){
+		return magicIngredient + " and " + filling;
+	};
+}
+
 //functions that keep track of variables from their containing scopes are known as closures
 //the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
