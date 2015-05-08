@@ -119,6 +119,19 @@ function box(){
 	};
 }
 
+var b = box();
+b.type(); //'undefined'
+b.set(98.6);
+b.get(); //98.6
+b.type(); //'number'
+
+//things to remember:
+//1 - functions can refer to variables defined in outer scopes
+//2 - closures can outlive the function that creates them
+//3 closures interanallyi store references to their outer variables, and can both read and update their stored variables
+
+
+
 //functions that keep track of variables from their containing scopes are known as closures
 //the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
