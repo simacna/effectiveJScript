@@ -108,6 +108,17 @@ function sandwichMaker(magicIngredient){
 	};
 }
 
+//#3 - Closures can update the values of outer variables. Closures actually store references to their outer variables, rather than copying their values
+
+function box(){
+	var val = undefined;
+	return {
+		set: function(newVal) {val = newVal;},
+		get: function() {return val;},
+		type: function() {return typeof val;}
+	};
+}
+
 //functions that keep track of variables from their containing scopes are known as closures
 //the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
