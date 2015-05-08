@@ -86,6 +86,20 @@ function sandwichMaker(){
 
 var f = sandwichMaker(); //the whole value of f is the returned make function
 f("jelly"); //"peanut butter and jelly"
+
+//A function can refer to any variables in its scope, including the parameters and variables of outer functions. We can use this
+// to make a more general purpose sandwichMaker
+
+function sandwichMaker(magicIngredient) {
+	function make(filling){
+		return magicIngredient + " and " + filling;
+	}
+	 return make;
+}
+
+var hamAnd = sandwichMaker("ham");
+hamAnd("cheese"); // "ham and cheese"
+
 //functions that keep track of variables from their containing scopes are known as closures
 //the make function is a closure whose code refers to two outer variables: magicIngredient and filling
 
