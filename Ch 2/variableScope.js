@@ -61,6 +61,7 @@ function swap2(a, i, j) {
 //chapter 2.11 -- closures. Three things to mainly know about them
 
 //#1 - JS allows you to refer to variables that were defined outside of the current function. Example below:
+//PYTHON - you can do this in Python!
 
 function makeSandwich(){
 	var magicIngredient = 'peaunut butter';
@@ -75,6 +76,7 @@ function makeSandwich(){
 makeSandwich(); //'peanut butter and jelly'
 
 //#2 - functions can refer to variables defined in outer functions even after those outer functions have returned. Personal note: this is strange, do more online research on this
+//PYTHON - YOU CAN DO THIS IN PYTHON TOO!
 
 function sandwichMaker(){
 	var magiIngredient = 'peanut butter';
