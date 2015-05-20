@@ -164,7 +164,20 @@ var myFunc = makeFunc(); //	QUESTION -- why won't the output (alert showing "Moz
 myFunc();
 
 
+//2.12 Understand Variable Hoisting
+//js supports lexical scoping: with only a few exceptions, a reference to a variable foo is bound to the nearest scope in which foo was declared. 
+//js does not support block scoping: variable definitions are not scoped to their nearest enclosing statement or block
 
+function isWinner(player, others){
+	var highest = 0;
+	for (var i = 0, n = others.length; i < n; i++){
+		var player = others[i];
+		if (player.score > highest) {
+			highest = player.score;
+		}
+	}
+	return player.score > highest;
+}
 
 
 
