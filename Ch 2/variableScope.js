@@ -179,6 +179,11 @@ function isWinner(player, others){
 	return player.score > highest;
 }
 
+//In JS, variables can be declared after it has been used. AKA, variable can be uysed before it has been declared. 
+//does the above work with immediately invoked functions?
+//NO. 'iffy function expressions can be used to avoid variable hoisting from within blocks, protect against polluting global environment
+//and simultaneously allow public access to methods while retaining privacy for variables defined within the function.
+
 
 
 
