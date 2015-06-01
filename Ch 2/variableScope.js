@@ -214,15 +214,44 @@ function trimSections(header, body, footer){
 	}
 }
 
+//things to remember:
+//1. Variable declarations within a block are implicitly hoisted to the top of the their enclosing function
+//2. Redeclarations of a variable are treated as a single variable
+//3. Consider manually hoisiting local variable declarations to avoid confusion
 
 
+//item 2.13 - use IFFY to create local scopes
+
+function wrapElements(a){
+	var result = [], i, n;
+	for (i = 0, n = a.length; i < n; i++) {
+		result[i] = function() { return a[i];};
+	}
+	
+	return result;
+}
+
+//the above code does not work - since the value of i changes through every iteration (each function being created), the inner functions end up seeing the final value of i. instead run the below:
+
+function wrapElements(a){
+	var result = [];
+	for var(i = 0, n = a.length; i < n; i++){
+		(function(){
+			var j = i;
+			result[i] = function(){
+				return result[j];
+			}
+		})();
+	}
+}
 
 
+//things to remember:
 
-
-
-
-
+//1. Understand the difference between binding and assignment
+//2. Closures capture their outer variables by reference, not by value
+//3. Use IFFY to create local scopes
+//4. Be aware of the cases where wrapping a block in an IFFY can change its behavior
 
 
 
