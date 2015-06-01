@@ -186,7 +186,17 @@ function isWinner(player, others){
 
 
 
-
+ function trimSections(header, body, footer) {
+	for (var i = 0, n = header.length; i < n; i++){
+		header[i] = header[i].trim();
+	}
+	for (var i, n = body.length; i < n; i++) {
+		body[i] = body[i].trim();
+	}
+	for(var i = 0, n = footer.length; i++){
+		footer[i] = footer[i].trim();
+	}
+}
 
 
 
