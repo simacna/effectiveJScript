@@ -253,6 +253,43 @@ function wrapElements(a){
 //3. Use IFFY to create local scopes
 //4. Be aware of the cases where wrapping a block in an IFFY can change its behavior
 
+//2.14 - beware of unportable scoping of named function expressions
+
+//function declaration
+
+function double(x){
+	return x*2;
+};
+
+//function expression. According to ECMAScript, this binds the function to a variable f rather than double. 
+
+var x = function double(x){
+	return x*2;
+};
+
+//official difference between anonymous and named function expressions is that named function expressions bind its name as a local variable within the function. This
+//can be used to write recursive function expressions. 
+
+var f = function find(tree, key){
+	if (!tree) {
+		return null;
+	}
+	if(tree.key == key){
+		return tree.value;
+	}
+	return find(tree.left, key) ||
+				 find(tree.right, key);
+};
+
+//find is only in scope within the function itself. Unlike function declaration, a named function expression can't be referred to externally by its internal name.
+
+find(myTree, "foo"); //error, find is not defined
+
+
+
+
+
+
 
 
 
