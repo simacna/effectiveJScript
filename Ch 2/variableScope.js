@@ -285,6 +285,20 @@ var f = function find(tree, key){
 
 find(myTree, "foo"); //error, find is not defined
 
+//using named function expressions for recursion may not seem particularly useful, since we can use the outer scope's name for the function:
+
+var f = function(tree, key){
+	if (!tree) {
+		return null;
+	}
+	if(tree.key == key) {
+		return tree.value
+	}
+	
+	return f(tree.left, key) ||
+				 f(tree.right, key);
+};
+
 
 
 
