@@ -360,6 +360,21 @@ function test(x){
 	return result;
 }
 
+//things to remember
+//Always keep function declaraions at the outermost level of a program or a containing to avoid unportable behavior
+//Use var declarations with conditional assignment instead of a conditional function declaration
+
+
+//2.16 - avoid creating local variables with eval
+
+
+
+
+
+
+
+
+
 
 
 
