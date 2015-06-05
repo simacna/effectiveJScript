@@ -31,3 +31,13 @@ var obj ={
 };
 
 obj.hello() //'hello, sina sima'
+
+//third use of functions is as constructors. Juse like methods and plain functions, constructors are defined with function:
+
+function User(name, passwordHash){
+	this.name = name;
+	this.passwordHash = passwordHash;
+}
+
+var u = new User('sina', 'dadagohagoang');
+u.name //sina
