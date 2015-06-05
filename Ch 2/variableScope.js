@@ -299,7 +299,66 @@ var f = function(tree, key){
 				 f(tree.right, key);
 };
 
+//or just use a declaration
 
+function find(tree, key){
+	if(!tree){
+		return null;
+	}
+	if (tree.key == key) {
+		return tree.value;
+	}
+	
+	return find(tree.left, key) ||
+				 find(tree.right, key);
+}
+
+var f = find;
+
+//real usefulness of named function expressions, though, is for debugging. JS environments produce stack traces for Error objects, and the name of a function expression is typically
+//used for its entry in a stack trace. 
+
+//things to remember:
+//Use named function expressions to improve stack traces in Error objects and debuggers
+
+//2.15 - Beware of unportable scoping of block-local function declarations
+
+//avoid writing function declarations into blocks
+
+function f() { return "global";}
+
+function test(x){
+	function f(){
+		return "local";
+	}
+	
+	var result = [];
+	if(x){
+		result.push(f());
+	}
+	
+	resultl.push(f());
+	return result;
+}
+
+alert(test(true)); //['local', 'local']
+
+//if you want to conditionally return outter function ([global] vs [local, local]), set outter function to a variable expression
+
+function f() {return 'global';}
+
+function test(x){
+	var g = f, result = [];
+	
+	if(x) {
+		g = function() { return 'local';}; 
+		
+		result.push(g());
+	}
+	
+	result.push(g());
+	return result;
+}
 
 
 
