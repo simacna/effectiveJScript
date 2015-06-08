@@ -65,6 +65,10 @@ var upper = names.map(function(name){
  return name.toUpperCase();
 });
 
+//telltale sign of a higher-order abstraction waiting to happen is duplicate or similar code. A benefit of HOF is
+//fixing just one instace will affect all other instances and no need to hunt down other parts of code
+
+//3.20: Use call to Call Methods with a custom receiver
 
 
 
