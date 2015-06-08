@@ -32,7 +32,7 @@ var obj ={
 
 obj.hello() //'hello, sina sima'
 
-//third use of functions is as constructors. Juse like methods and plain functions, constructors are defined with function:
+//third use of functions is as constructors. Just like methods and plain functions, constructors are defined with function:
 
 function User(name, passwordHash){
 	this.name = name;
@@ -41,3 +41,49 @@ function User(name, passwordHash){
 
 var u = new User('sina', 'dadagohagoang');
 u.name //sina
+
+//3.19 - get comfortable with using higher order functions
+
+//higher-order functions are nothing more than functions that take other functions as arguments or return functions as their result and JS uses it heavily
+
+
+
+//below is two different ways of capitaling an array. The first uses a for loop, second we use map() and pass in a function
+
+
+var names = ["firstname" , "secondname"];
+
+function cap(list){
+  for(var i = 0; i < names.length; i++){
+  names[i] = names[i].toUpperCase();
+  
+  }
+  return names;
+}
+
+var upper = names.map(function(name){
+ return name.toUpperCase();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
