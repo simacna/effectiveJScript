@@ -70,6 +70,40 @@ var upper = names.map(function(name){
 
 //3.20: Use call to Call Methods with a custom receiver
 
+//3.21 Use apply to call functions with different numbers of arguments
+
+//the function below can take multiple paramets - functions like this are named variadic/variable-arity function compared
+//to fixed-arity version which taks a fixed number of parameters -- in this case probably a single argument array of 
+//values
+
+averageOfArray([1,2,3]) //3
+
+average(1,2,3); //3
+average(1);
+average(3, 1, 4, 9);
+
+//variadic version is ore concise and arguably more elegant. Variadic functions have convenient syntax, at least when the
+//caller knows ahead of time exactly how many arguments to provide
+
+//apply method takes an array of arguments and calls the function as if each element of the array were an individual
+//argument of the call.
+//below imagine having an array of values store in scores. apply takes a first argument that specifies the binding of
+//this for the function being called. since our average functin does not refer to this, we will put null
+
+var scores = getAllScores();
+average.apply(null, scores);
+
+
+//if scors turns out to have for ex. 3 elements, this will behave the same as if we had written:
+
+average(scores[0], scorse[1], scores[2]);
+
+//things to remember:
+//1. Use the apply method to call variadic functions with a computed array of arguments
+//2. Use the first argument of apply to provide a receiver for variadic methods
+
+
+
 
 
 
