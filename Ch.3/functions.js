@@ -102,6 +102,21 @@ average(scores[0], scorse[1], scores[2]);
 //1. Use the apply method to call variadic functions with a computed array of arguments
 //2. Use the first argument of apply to provide a receiver for variadic methods
 
+//3.22 - Use arguments to create variadic functions 
+
+//js provides every function with an implicit local variable called arguments: it contains indexed properties for each
+//actual argument and a length property indicating how many arguments were provided.
+
+function average(){
+	for (var i = 0, sum = 0, n = arguments.length; i < n; i++){
+		sum += arguments[i];
+	}
+
+	return sum/n;
+}
+
+//3.23 - Never modify the arguments object
+
 
 
 
