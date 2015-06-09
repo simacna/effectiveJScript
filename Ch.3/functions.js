@@ -116,6 +116,7 @@ function average(){
 }
 
 //3.23 - Never modify the arguments object
+//3.24: Use a variable to save a reference to arguments
 
 
 
