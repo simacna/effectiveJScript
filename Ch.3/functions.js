@@ -117,7 +117,48 @@ function average(){
 
 //3.23 - Never modify the arguments object
 //3.24: Use a variable to save a reference to arguments
+//3.25 - Use bind to Extract methods with a fixed receiver
 
+var buffer = {
+	entries:[], 
+	add: function(x){
+		this.entries.push(x); //why is this needed, obviously entries is within the object's 
+	},
+	concat: function(){
+		return this.entries.join("");
+	}
+};
+
+var source = ["one", "two", "three"];
+source.forEach(buffer.add, buffer); //buffer is the receiver of the call to allow entries to be known
+//if arr.forEach() did not offer providing a receiver for their callback (and instead use the global object as the callback)
+//we could do the following:
+
+source.forEach(function(s){
+	buffer.add(s);
+});
+buffer.join(); //"onetwothree"
+
+//this version creates a wrapper function that explicitly calls add as a method of of buffer.
+//creating a version of a function that binds its receiver to a specific object is so common that ES5 added library 
+//for support. Function objects come with a bind method that takes a reciever object and produces a wrapper function 
+//that calls the original function as a method of the reciever
+
+var source = ["one", "two", "three"];
+source.forEach(buffer.add.bind(buffer));
+buffer.concat(); //onetwo
+
+//buffer.add.bind(buffer) creates a new function rather than modifying the buffer.add and the old one is unchanged
+
+buffer.add === buffer.add.bind(buffer); //false
+
+//things to remember
+//1. Beware that extracting a method does not bind the method's receiver to its object
+//2. When passing an object's method to a higher-order function, use an anonymous function to call the method on the 
+//appropriate receiver
+//3. Use bind as a shorthand for creating a function bound to the appropriate receiver
+
+//3.26 - Use bind to curry functions
 
 
 
