@@ -160,8 +160,23 @@ buffer.add === buffer.add.bind(buffer); //false
 
 //3.26 - Use bind to curry functions
 
+function simpleURL(protocol, domain, path){
+	return protocol + '://' + domain + "/" + path;
+}
+
+var urls = paths.map(function(path){
+	return simpleURL("http", siteDomain, path);
+});
+
+//say if we had paths = ['hi', 'sometehing']; then running the above urls would give us an array with two url's
+//an alternate version is below using currying (binding a function to a subset of its arguments)
+
+var urls = paths.map(simpleURL.bind(null, "http", siteDomain));
 
 
+//things to remember
+//1. Use bind to curry a function, that is, to create a delegating function with a fixed subset of the required arguments
+//2. Pass null or undefined as the receiver arguments to curry a function that ignores its receiver
 
 
 
@@ -173,6 +188,8 @@ buffer.add === buffer.add.bind(buffer); //false
 
 
  
+
+
 
 
 
