@@ -178,8 +178,16 @@ var urls = paths.map(simpleURL.bind(null, "http", siteDomain));
 //1. Use bind to curry a function, that is, to create a delegating function with a fixed subset of the required arguments
 //2. Pass null or undefined as the receiver arguments to curry a function that ignores its receiver
 
-//3.27 - prefer closures to strings for encapsulating code
+//3.28: Avoid relying on the toString method of functions
 
+// JS functions come with the ability to reproduce their source code as a toString
+
+(function(x){
+	return x + 1;
+}).toString(); //'function(x){ \n return x + 1; \n'
+
+
+//3.29 - Avoid nonstandard stack inspection
 
 
 
