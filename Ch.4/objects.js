@@ -48,11 +48,44 @@ var u = new User('sina', 'abcdefg');
 // 2. Object.getPrototypeOf(obj) is the standard ES5 function for retrieving the prototype of an object
 // 3. A class is a design pattern consisting of a construction function and associated prototype
 
+//3.31 - Prefer Obj.getPrototypeOf to __proto__ 
+//3.33 - Make your constructors new-Agnostic
+
+// When you create a constructor such as the User function in Item 30, you rely on callers to remember to call it
+// with the new operator. 
+
+function User(name, hash){
+	this.name = name;
+	this.hash = hash;
+}
+
+// If a caller forgets the new keyword, then the function's receiver becomes the global object
+
+var u = User("sina", "password");
+u; //undefined
+this.name //sina
+this.password //password
+
+If you had a name/password global variable, it would override
+
+If the user function is defined as ES5 strict code, then the receiver defaults to undefined
+
+function User(name, password){
+	"use strict";
+	this.name = name;
+	this.password = password;
+}
+
+var u = User('sina', 'password'); //error: this is undefined
+
+// int his case, the faulty call leads to an immediate error: the first line of User attempts to assign to this.name,
+// which throws a TypeError
 
 
+// A more robust approach is to provide a function that works as a constructor no matter how it's called. An 
+// easy way to implement this is to check that the receiver value is a proper instance of User:
 
-
-
+//here several examples are shown but seems too... tedious
 
 
 
