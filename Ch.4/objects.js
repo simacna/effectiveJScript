@@ -87,11 +87,35 @@ var u = User('sina', 'password'); //error: this is undefined
 
 //here several examples are shown but seems too... tedious
 
+//things to remember:
+// 1. Make a constructor agnostic to its caller's syntax by reinvoking itself with new or Object.create
+// 2. Document clearly when a function expects to be called with new
 
+//Item 34: Store methods on prototypes
 
+//it's perfectly possible to add methods to the User class for example:
 
+function Uer(name, password){
+	this.name = name;
+	this.password = password;
 
+	this.toString = function(){
+		return "User: " + this.name;
+	}
 
+	this.checkPassword = function(psw){
+		return (psw === this.password);
+	};
+}
+
+// Storing methods on a prototypemakes them available to all instances without requiring multiple copies of the 
+// functions that implement them or extra properties on each instance object. 
+
+//And instance methods are almost certain to use more meory than prototype methods
+
+// things to remember:
+// 1. Storing methods on instance objects creates multiple copies of the functions, one per instance object
+// 2. Prefer storing methods on prototypes over storing them on instance objects 
 
 
 
