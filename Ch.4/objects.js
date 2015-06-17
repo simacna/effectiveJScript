@@ -117,6 +117,41 @@ function Uer(name, password){
 // 1. Storing methods on instance objects creates multiple copies of the functions, one per instance object
 // 2. Prefer storing methods on prototypes over storing them on instance objects 
 
+// Item 3.35 - Use closures to store private data
+// 
+// JS object system does not particularly encourage or enforce information hiding.  Often developers resort to coding conventions rather than any absolute enforcement mechanism
+// for private propertis by using naming conventions such as prefixing or suffexing private property names with an underscore character (_). This does nothing to enforce information hiding.
+// 
+// Some programs actually call for higher degree of hiding.
+// 
+// Closures store data in their enclosed variables without providing direct access to these variables. The only way to gain access to the internals of a closure is for the
+// function to provide access to it explicitly.  In other words, objects and closures have opposite policies: The properties of an object are automatically exposed, whereas the variables
+// in a closure are automatically hidden.
+
+// Instead of storing the data as properties of the objects, we store it as variables in the constructor and turn the methods of the object into closures that refer to those variables. 
+// 
+// Example: we'll use the User class from Item 30
+
+function User(name, passwordHash){
+	this.toString = function(){
+		return "[User " + name + "]";
+	};
+	this.checkPassword = function(password){
+		return hash(password) === passwordHash;
+	};
+}
+
+// Notice how unlike the other implementation, the toString and checkPassword methods refer to name and passwordHash as variables, rather than as properties of this. An instance
+// of User now contains no instance properties at all, so outside code has no direct access to the name and password hash of an instance of User. 
+// 
+// Downside of this is that in order for the variables of the constructor to be in scope of the methods that use them, the methods must be placed on the instance object.
+// This can lead to a proliferation of copies of methods as previously discussed (rather than adding methods to the prototype). 
+// 
+// Things to remember:
+// 
+// 1. Closure variables are private, accessible only to local references
+// 2. Use local variables as private data to enforce information hiding within methods
+
 
 
 
