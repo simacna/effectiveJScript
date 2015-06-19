@@ -151,11 +151,11 @@ function User(name, passwordHash){
 // 
 // 1. Closure variables are private, accessible only to local references
 // 2. Use local variables as private data to enforce information hiding within methods
-
-Item 3.36 - store instances state only on instance objects 
-Store per-instance data on the instance object and not the prototype - aka if data is mutable, place it on the instance object. Example below:
-
-the below is incorrect:
+// 
+// Item 3.36 - store instances state only on instance objects 
+// Store per-instance data on the instance object and not the prototype - aka if data is mutable, place it on the instance object. Example below:
+// 
+// the below is incorrect:
 
 function Tree(x){
 	this.value = x;
@@ -168,7 +168,7 @@ Tree.prototype = {
 	}
 };
 
-consider what happens when we try to construct a tree with this class:
+// consider what happens when we try to construct a tree with this class:
 
 var left = new Tree(2);
 left.addChild(1);
@@ -184,10 +184,10 @@ top.addChild(right);
 
 top.children; //[1,3,5,7,left, right]
 
-Each time we call addChild, we append a value to Tree.prototype.children, which contains the nodes in the order of any calls to addChild anywhere! This leaves the Tree
-objects in the incoherent state showin in 4.5.
-
-The correct way to implement the Tree class is to create a separate children array for each instance object:
+// Each time we call addChild, we append a value to Tree.prototype.children, which contains the nodes in the order of any calls to addChild anywhere! This leaves the Tree
+// objects in the incoherent state showin in 4.5.
+// 
+// The correct way to implement the Tree class is to create a separate children array for each instance object:
 
 function Tree(x){
 	this.value = x;
@@ -200,11 +200,16 @@ Tree.prototype = {
 	}
 }
 
+// The moral is stateful data can be problematic when shared. Methods are generally safe to share between multiple instances of a class because they are typically stateless. 
+// Methods are by far the most common data found on prototype objects. Per instance state, meanwhile, must be stored on instance objects. 
 
 
-
-
-
+// Things to remember:
+// 1. Mutable data can be problematic when shared, and prototypes are shared between all their instances
+// 2. Store mutable per-instance state on instance objects
+// 
+// 
+// 
 
 
 
