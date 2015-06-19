@@ -162,9 +162,9 @@ function Tree(x){
 }
 
 Tree.prototype = {
-	children = [],
+	children : [],
 	addChild: function(x){
-		this.children.push(x)
+		this.children.push(x);
 	}
 };
 
