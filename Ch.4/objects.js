@@ -209,12 +209,40 @@ Tree.prototype = {
 // 2. Store mutable per-instance state on instance objects
 // 
 // 
+// Item 3.37 - Recognize the implicit binding of this
 // 
+// this keywoard is bound to the closest function that is calling it. map() accepts a second parameter where this can be passed to (similar to forEach)
+// 
+// What if map() did not accept a second parameter to refer to the outer this? We would use a lexically scoped variable to save an additional reference to the outer
+// binding of this:
+
+CSVReader.prototype.read = function(str){
+	var lines = str.trim().split(\/n/);
+	var self = this; //save a reference to outer this-binding
+	return lines.map(function(line){
+		return line.split(self.regexp); //use outer this
+	});
+}
 
 
+// Programmers commonly use the variable name self for this pattern
 
+// Another valid ES5 is to use callback function's bind method
 
+CSVReader.prototype.read = function(str){
+	var lines = str.trim().split(\/n/);
+	return lines.map(function(line){
+		return str.split(this.regexp);
+	}.bind(this)); //bind to outer this-binding
+};
 
+var reader = new CSVReader();
+
+reader.read("a,b,c\nd,e,f\n");
+
+// Things to remember:
+// 1. The scope of this is always determined by its nearest enclosing function
+// 2. Use a local variable, usually called self, me, or that to make a this-=binding available to innder functions. 
 
 
 
