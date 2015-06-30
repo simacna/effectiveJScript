@@ -244,6 +244,37 @@ reader.read("a,b,c\nd,e,f\n");
 // 1. The scope of this is always determined by its nearest enclosing function
 // 2. Use a local variable, usually called self, me, or that to make a this-=binding available to innder functions. 
 
+// Item 3.38 - Call Superclass constructors from subclass constructors 
+
+function Scene(context, width, height, images){
+  this.context = context;
+  this.width = width;
+  this.height = height;
+  this.images = images;
+  this.actors = [];
+}
+
+Scene.prototype.register = function(actor){
+  this.actors.push(actor);
+};
+
+Scene.prototype.unregister = function(actor){
+  var i = this.actors.indexOf(actor);
+  
+  if (i >= 0){
+    this.actors.splice(i, 1); //first parameter is where to delete, 2nd is how many items, rest (optional) would be what to add into array
+  }
+};
+
+
+
+
+
+
+
+
+
+
 
 
 
