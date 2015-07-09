@@ -270,6 +270,10 @@ Scene.prototype.unregister = function(actor){
 // Item 3.39 - Never reuse superclass property names 
 // Item 3.40 - Avoid inheriting from standard classes. Inheriting from standard classes tends to break due to special internal properties such as [[Class]]
 
+// Item 3.41 - Treat prototypes as an implemention detail 
+
+
+
 
 
 
