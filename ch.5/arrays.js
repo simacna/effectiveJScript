@@ -48,7 +48,59 @@ dict.chris = 62;
 
 dict.count(); // 5
 
+//the mistake above is the same object is used to store both fixed properties of the NaiveDict data structure (count, toString) and the variable entries of the specific dictionary
+// (alice, bob, chris). When count enumerates, the properties of a dictionary, it counts all of these properties instead of just the entries we care about
 
+//similar mistake can happen with using Array type to represent dictionaries.
+
+
+var dict = new Array();
+
+dict.alice = 34;
+dict.bob = 24;
+dict.chris = 62;
+
+dict.bob; //24
+
+//Unfortunately this code is vulnerable to prototype pollution, where properties on a prototype object can cause unexpected properties to appear when enumerating dictionary entries.
+// for example, another library in the application may decide to add some convenience methods to Array.prototype:
+
+Array.prototype.first = function(){
+	return this[0];
+};
+
+Array.prototype.last = function(){
+	return this[this.length - 1]
+};
+
+// Now see what happens when we attempt to enumearate the elemnts of our array:
+
+var names = []
+
+for (var name in dict){
+	names.push(name);
+}
+
+names; // ['alice', 'bob', 'chris', 'first', 'last']
+
+//Example: we can simply replace new Array() above with new Object() or even an emtpy object literal. The result is much less susceptible to protype pollution:
+
+var dict = {}
+
+dict.alice = 34;
+dict.bob = 24;
+
+var names = []
+
+for (var name in dict){
+	names.push(name);
+}
+
+names; //['alice', 'bob']
+
+//things to remember
+//1. use object literals to construct lightweight dictionaries
+//2. lightweight dictionaries should be direct descendants of Object.prototype to protect against p
 
 
 
