@@ -106,7 +106,7 @@ names; //['alice', 'bob']
 
 // with new ES, you can now do
 var x = Object.create(null); 
-//whereas before the following would occur and Object.prototype would not return null
+//whereas before the following would occur and Object.prototype would not return nulll
 
 function C(){}
 C.prototype =  null; 

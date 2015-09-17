@@ -102,7 +102,18 @@ names; //['alice', 'bob']
 //1. use object literals to construct lightweight dictionaries
 //2. lightweight dictionaries should be direct descendants of Object.prototype to protect against p
 
+// Use null prototypes to prevent prototype pollution (double check what prototype pollution is)
 
+// with new ES, you can now do
+var x = Object.create(null); 
+//whereas before the following would occur and Object.prototype would not return null
+
+function C(){}
+C.prototype =  null; 
+
+var o = new C();
+Object.getPrototypeOf(o) === null; //false
+Object.getPrototypeOf(o) === Object.prototype; //true
 
 
 
