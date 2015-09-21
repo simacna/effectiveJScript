@@ -106,7 +106,7 @@ names; //['alice', 'bob']
 
 // with new ES, you can now do
 var x = Object.create(null); 
-//whereas before the following would occur and Object.prototype would not return nulll
+//whereas before the following would occur and Object.prototype would not return null
 
 function C(){}
 C.prototype =  null; 
@@ -114,6 +114,8 @@ C.prototype =  null;
 var o = new C();
 Object.getPrototypeOf(o) === null; //false
 Object.getPrototypeOf(o) === Object.prototype; //true
+
+//testing
 
 
 
