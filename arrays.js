@@ -115,7 +115,7 @@ var o = new C();
 Object.getPrototypeOf(o) === null; //false
 Object.getPrototypeOf(o) === Object.prototype; //true
 
-//testing
+//testing testing
 
 
 
